@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>API</title>
+        <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </head>
+    <body>
+      <div class="container" style="padding-top: 50px;">
+          <div class="row">
+            <marquee style="HEIGHT: 200px" scrollamount="10" direction="left" >
+              <h3>友情提示： 本程序基于gotit进行优化，因课程类型的原因，可能会造成一些误差。经测试，本程序是目前最接近正确数据的。</h3>
+            </marquee>
+        </div>
+          <table class="table table-bordered">
+            <tr class="active">
+              <td>平均学分绩点</td>
+              <td>
+                {% if credit >= 80 %}
+                {{ credit }}
+                <h3>学霸 求带啊！</h3>
+                {% endif %}
+                {% if credit >= 70 and credit < 80 %}
+                  {{ credit }}
+                  <h3>噗，还好可以安全毕业了</h3>
+                {% endif %}
+                {% if credit < 70 %}
+                  {{ credit }}
+                <h3>骚年，还要努力啊！</h3>
+                {% endif %}
+              </td>
+            </tr>
+          </table>
+      </div>
+      <div class="container" style="margin-top: 100px">CodeBy<a href="http://weibo.com/u/3925574605" target="_blank">**蔚</a></div>
+    </body>
+</html>
