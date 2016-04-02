@@ -46,7 +46,8 @@ class Gpa():
     def get_table(self):
         page = self.crawl()
         pattern = re.compile(
-            '<td scope="col" align=".*" valign="middle" nowrap>&nbsp;(.*)</td>')
+            '<td scope="col" align=".*" valign="middle" nowrap>&nbsp;(.*)</td>'
+        )
         self.TABLE = pattern.findall(page)
         return 0
 
@@ -202,6 +203,17 @@ def get_credit():
         except:
             return redirect(url_for('index'))
     return render_template('show.html', credit=credit)
+
+
+@app.route('/api')
+def api():
+    xuehao = request.args.get('xh')
+    gpa = Gpa(xuehao)
+    gpa.get_table()
+    gpa.get_user_info()
+    gpa.get_score()
+    credit = gpa.get_credit()
+    return jsonify({'credit': credit})
 
 if __name__ == '__main__':
     manager.run()
