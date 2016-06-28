@@ -6,5 +6,5 @@ ADD requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
-CMD ['python', 'manage.py', 'runserver']
+CMD python manage.py runserver
 EXPOSE 3000
